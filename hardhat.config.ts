@@ -1,5 +1,6 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
+import "@nomicfoundation/hardhat-ignition-ethers";
 import { vars } from "hardhat/config";
 
 const ALCHEMY_API_KEY = vars.get("ALCHEMY_API_KEY");
@@ -24,6 +25,12 @@ const config: HardhatUserConfig = {
   },
   sourcify: {
     enabled: true
+  },
+  ignition: {
+    blockPollingInterval: 1_000,
+    timeBeforeBumpingFees: 3 * 60 * 1_000,
+    maxFeeBumps: 4,
+    requiredConfirmations: 6,
   },
 };
 
